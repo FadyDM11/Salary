@@ -1,6 +1,8 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddCors();
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -19,7 +21,10 @@ else
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors(policy =>
+{
+    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200");
+});
 app.UseHttpsRedirection();
 app.UseAuthorization();
 

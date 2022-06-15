@@ -14,7 +14,6 @@ namespace Salary.Controllers
         {
             _logger = logger;
         }
-        [EnableCors("AllowOrigin")]
         [HttpGet(Name = "GrossByNet")]
         public ConverterDto Get(string net)
         {
